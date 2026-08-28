@@ -22,8 +22,8 @@ function Home(){
 
 
     const handleAdd = async () => {
-
-        if(!tarea){
+        const limpiarTarea = tarea.trim()
+        if(!limpiarTarea){
             alert("Tarea vacia")
             return
         }
@@ -35,7 +35,7 @@ function Home(){
             "Content-Type": "application/json",
             },
             body: JSON.stringify({
-            name: tarea
+            name: limpiarTarea
             })
         })
         
