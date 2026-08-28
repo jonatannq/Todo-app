@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Tarea from './component/tarea.jsx'
+import Boton from './component/boton.jsx'
 
 function App() {
 
@@ -32,7 +33,9 @@ function App() {
       
       <form onSubmit={handleAdd}>
         <input type="text" value={tarea} placeholder="Escribe tu tarea" onChange={(e) => setTarea(e.target.value)} />
-        <button>YES</button>
+        <Boton>
+          Funciona
+        </Boton>
       </form>
 
     </>

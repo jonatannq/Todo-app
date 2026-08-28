@@ -3,7 +3,10 @@
 function Tarea({name}){
     return(
     <>
-        <h1>{name}</h1>
+        <div>
+            <input type="radio"  />
+            <label>{name}</label>
+        </div>
     </>
     )
 }
