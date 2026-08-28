@@ -2,7 +2,7 @@ import Boton from './boton.jsx'
 
 function Tarea({id, name}){
     const borrar = () => {
-      alert("Borrar tarea: "+ name+ " con id " +id   )
+      alert("Borrar tarea: "+ name + " con id " + id)
     }
     return(
     <>
