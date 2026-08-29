@@ -11,7 +11,7 @@ function Home(){
     useEffect(() =>{
         const cargarTareas = async () => {
             try {
-                const respuesta = await fetch("http://localhost:3000/tarea")
+                const respuesta = await fetch("http://localhost:3000/tareas")
                 const data = await respuesta.json()
                 setTareas(data)
             } catch (error) {
@@ -31,7 +31,7 @@ function Home(){
         }
 
         try {
-            const respuesta = await fetch("http://localhost:3000/tarea", {
+            const respuesta = await fetch("http://localhost:3000/tareas", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
@@ -55,8 +55,21 @@ function Home(){
     } //Fin de evento agregar tarea
 
 
-    const handleDelete = () => {
-        alert("borrar tarea")
+    const handleDelete = async (id) => {
+        try {
+            const respuesta = await fetch(`http://localhost:3000/tareas/${id}`, {
+                method: "DELETE"
+            })
+
+            if(!respuesta.ok){
+                throw new Error("Hubo un error en la respuesta")
+            }
+
+            const data = await respuesta.json()
+            console.log(data)
+        } catch (error) {
+            console.log("GGG")
+        }
     }
 
     return (

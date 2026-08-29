@@ -15,7 +15,7 @@ const db = mysql.createConnection({
 })
 
 
-app.get("/tarea", (req, res) => {
+app.get("/tareas", (req, res) => {
     db.query("SELECT * FROM tareas", (error, resultado) => {
         if(error){
             return res.status(500).json({
@@ -26,17 +26,45 @@ app.get("/tarea", (req, res) => {
     })
 })
 
-app.post("/tarea", (req, res) => {
+app.post("/tareas", (req, res) => {
     const {name} = req.body
     db.query("INSERT INTO tareas(nombre) VALUES(?)", [name], (error, resultado) => {
         if(error){
             return res.status(500).json({
-                error: "Hubo un error al insertar los datos"
+                error: "Hubo un error al insertar los"
             })
         }
         res.json(resultado)
     })
 })
+
+
+app.delete("/tareas/:id", (req, res) => {
+    const { id } = req.params
+    db.query("DELETE FROM tareas WHERE id = ?", [id], (error, resultado) => {
+        if(error){
+            return res.status(500).json({
+                error: "Hubo un error al deletear"
+            })
+        }
+        res.json(resultado)
+    })
+})
+
+app.put("/tarea/:id", (req, res) => {
+    const { id } = req.params.id
+    db.query("UPDATE tareas set", [id], (error, resultado) => {
+        if(error){
+            return res.status(500).json({
+                error: "Hubo un error al deletear"
+            })
+        }
+        res.json(resultado)
+    })
+})
+
+
+
 
 app.listen(3000, () => {
     console.log("Escuchando el server")

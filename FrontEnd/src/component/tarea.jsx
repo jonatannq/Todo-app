@@ -13,7 +13,7 @@ function Tarea({lista, click}){
                             <span>{tarea.id +  " "}</span>
                             <label>{tarea.nombre}</label>
                             
-                            <Boton click={click}>
+                            <Boton click={() => click(tarea.id)}>
                                 Eliminar
                             </Boton>
                         </div>
