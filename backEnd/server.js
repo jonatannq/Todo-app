@@ -51,9 +51,10 @@ app.delete("/tareas/:id", (req, res) => {
     })
 })
 
-app.put("/tarea/:id", (req, res) => {
-    const { id } = req.params.id
-    db.query("UPDATE tareas set", [id], (error, resultado) => {
+app.put("/tareas/:id", (req, res) => {
+    const { tarea } = req.body
+    const { id } = req.params
+    db.query("UPDATE tareas SET nombre = ? WHERE id = ?", [tarea, id], (error, resultado) => {
         if(error){
             return res.status(500).json({
                 error: "Hubo un error al deletear"

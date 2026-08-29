@@ -2,7 +2,7 @@
 
 function Boton({children, click}){
     return(
-        <button onClick={click}>{children}</button>
+        <button onClick={click}> {children} </button>
     )
 }
 
