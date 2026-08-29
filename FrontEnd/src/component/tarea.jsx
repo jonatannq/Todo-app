@@ -1,20 +1,32 @@
 import Boton from './boton.jsx'
 
-function Tarea({id, name}){
-    const borrar = () => {
-      alert("Borrar tarea: "+ name + " con id " + id)
-    }
+function Tarea({lista, click}){
+    
     return(
-    <>
+    
         <div>
-            <input type="radio"  />
-            <label>{name}</label>
-            <Boton click={borrar}>
-                Eliminar
-            </Boton>
+            {
+                lista.map((tarea) => {
+                    return(
+                        <div key={tarea.id}>
+                            <input type="radio"  />
+                            <span>{tarea.id +  " "}</span>
+                            <label>{tarea.nombre}</label>
+                            
+                            <Boton click={click}>
+                                Eliminar
+                            </Boton>
+                        </div>
+            
+                    )
+                })
+            }
         </div>
-    </>
+    
     )
+
+
+
 }
 
 export default Tarea
