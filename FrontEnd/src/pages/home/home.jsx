@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react"
-import Tarea from '../component/tarea.jsx'
-import Boton from '../component/boton.jsx'
+import Tarea from '../../component/tarea/tarea.jsx'
+import Boton from '../../component/boton/boton.jsx'
 
+import styles from './home.module.scss'
 
 function Home(){
     const [tarea, setTarea] = useState("")
     const [tareas, setTareas] = useState([])
     const [editando, setEditando] = useState(false)
 
-    const [errores, setErrores] = useState([""])
+    const [errores, setErrores] = useState([])
 
     const cargarTareas = async () => {
             try {
@@ -57,9 +58,6 @@ function Home(){
         console.log("Hubo un error : ", error)
         }
     } //Fin de evento agregar tarea
-
-
-
 
     const handleDelete = async (id) => {
         try {
@@ -125,8 +123,8 @@ function Home(){
         
 
         <div>
-            <input type="text" value={tarea} placeholder="Escribe tu tarea" onChange={(e) => setTarea(e.target.value)} />
-            <Boton click={handleAdd} >
+            <input className={styles.input} type="text" value={tarea} placeholder="Escribe tu tarea" onChange={(e) => setTarea(e.target.value)} />
+            <Boton  click={handleAdd} >
                 Agregar
             </Boton>
         </div>

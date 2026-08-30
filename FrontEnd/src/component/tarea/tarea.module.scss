@@ -1,0 +1,16 @@
+
+
+.content{
+
+    border-bottom: 1px solid salmon;
+    width: 90%;
+    padding: 0.5rem;
+    &:last-of-type{
+        border: none;
+    }
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}

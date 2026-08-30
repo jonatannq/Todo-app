@@ -1,0 +1,14 @@
+@use 'variables' as v; 
+
+
+
+body{
+    font-family: v.$fuente;
+    margin: 0;
+    
+}
+
+h1{
+    font-size: 3rem;
+    margin: 0;
+}
