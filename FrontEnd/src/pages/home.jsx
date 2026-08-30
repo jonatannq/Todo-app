@@ -113,8 +113,6 @@ function Home(){
         <>
         <h1>Todo App List</h1>
 
-
-
         <Tarea 
             lista={tareas}
             del={handleDelete}
