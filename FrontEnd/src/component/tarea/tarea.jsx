@@ -3,7 +3,8 @@ import Boton from '../boton/boton.jsx'
 import styles from './tarea.module.scss'
 
 function Tarea({lista, del, save, 
-    editando, setEditando}){//Cambiar esas props
+    editando, setEditando,
+    estado }){//Cambiar esas props
 
     const [textoEditado, setTextoeditado] = useState("")
     const [compare, setCompare] = useState(null)
@@ -34,7 +35,7 @@ function Tarea({lista, del, save,
                             <>
                             <div className={styles.flex}>
                                 <div>
-                                    <input id={`tarea-${tarea.id}`} onClick={() => alert("tarea completada")} type="radio"  />
+                                    <input id={`tarea-${tarea.id}`} onClick={() => estado(tarea.id)} type="radio"  />
                                     <label htmlFor={`tarea-${tarea.id}`}>{tarea.nombre}</label>
                                 </div>
 

@@ -16,7 +16,18 @@ const db = mysql.createConnection({
 
 
 app.get("/tareas", (req, res) => {
-    db.query("SELECT * FROM tareas", (error, resultado) => {
+    db.query("SELECT * FROM tareas WHERE estado = false", (error, resultado) => {
+        if(error){
+            return res.status(500).json({
+                error: "Hubo un error al cargar las tareas"
+            })
+        }
+        res.json(resultado)
+    })
+})
+
+app.get("/tareascomplete", (req, res) => {
+    db.query("SELECT * FROM tareas WHERE estado = true", (error, resultado) => {
         if(error){
             return res.status(500).json({
                 error: "Hubo un error al cargar las tareas"
@@ -64,6 +75,18 @@ app.put("/tareas/:id", (req, res) => {
     })
 })
 
+app.patch("/tareas/:id", (req, res) => {
+    const { estado } = req.body
+    const { id } = req.params
+    db.query("UPDATE tareas SET estado = ? WHERE id = ?", [estado, id], (error, resultado) => {
+        if(error){
+            return res.status(500).json({
+                error: "Hubo un error al deletear"
+            })
+        }
+        res.json(resultado)
+    })
+})
 
 
 

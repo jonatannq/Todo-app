@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
+
+
 import Tarea from '../../component/tarea/tarea.jsx'
 import Boton from '../../component/boton/boton.jsx'
+import Side from '../../component/sidebar/sidebar.jsx'
 
 import styles from './home.module.scss'
 
@@ -22,7 +25,6 @@ function Home(){
     }
 
     useEffect(() =>{
-        
         cargarTareas()
     },[])
 
@@ -106,27 +108,52 @@ function Home(){
         cargarTareas()
     }
 
+    const tareaCompletada = async ( id ) => {
+
+        try {
+                const respuesta = await fetch(`http://localhost:3000/tareas/${id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        estado: true
+                    })
+                })
+            } catch (error) {
+                console.log("Hubo un error al completar")
+            }
+        
+    }
+
 
     return (
         <>
         <h1>Todo App List</h1>
 
-        <Tarea 
-            lista={tareas}
-            del={handleDelete}
-            save={handleSave}
+        <div className={styles.display}>
 
-            //Factorizar
-            editando={editando}
-            setEditando={setEditando}
-        />
-        
+            <div>
+                <Side />
+            </div>
+            
+            <div> 
+                <Tarea 
+                    lista={tareas}
+                    del={handleDelete}
+                    save={handleSave}
+                    estado={tareaCompletada}
 
-        <div>
-            <input className={styles.input} type="text" value={tarea} placeholder="Escribe tu tarea" onChange={(e) => setTarea(e.target.value)} />
-            <Boton  click={handleAdd} >
-                Agregar
-            </Boton>
+                    //Factorizar
+                    editando={editando}
+                    setEditando={setEditando}
+                    
+                />
+                <input className={styles.input} type="text" value={tarea} placeholder="Escribe tu tarea" onChange={(e) => setTarea(e.target.value)} />
+                <Boton  click={handleAdd} >
+                    Agregar
+                </Boton>
+            </div>
         </div>
     </>
     )
