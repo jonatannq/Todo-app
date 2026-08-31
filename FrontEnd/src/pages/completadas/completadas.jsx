@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Side from '../../component/sidebar/sidebar.jsx'
+
 
 
  function Completadas() {
@@ -15,9 +15,7 @@ import Side from '../../component/sidebar/sidebar.jsx'
     }, [])
     return(
         <div>
-            <div>
-                <Side />
-            </div>
+            
             <div>
                 <p>Tareas completadas: {completas.length}</p>
                 {completas.map((tarea) => {

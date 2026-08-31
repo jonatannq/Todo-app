@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
+import { 
+    obtenerTareas 
 
+} from "../../api/api.js"
 
 import Tarea from '../../component/tarea/tarea.jsx'
 import Boton from '../../component/boton/boton.jsx'
-import Side from '../../component/sidebar/sidebar.jsx'
+
 
 import styles from './home.module.scss'
 
@@ -54,8 +57,6 @@ function Home(){
 
             const data = await respuesta.json()
             setTarea("")
-            cargarTareas()
-
         } catch (error) {
         console.log("Hubo un error : ", error)
         }
@@ -133,9 +134,7 @@ function Home(){
 
         <div className={styles.display}>
 
-            <div>
-                <Side />
-            </div>
+         
             
             <div> 
                 <Tarea 
