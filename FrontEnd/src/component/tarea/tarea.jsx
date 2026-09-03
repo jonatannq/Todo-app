@@ -35,11 +35,11 @@ function Tarea({lista, del, save,
                             <>
                             <div className={styles.flex}>
                                 <div>
-                                    <input id={`tarea-${tarea.id}`} onClick={() => estado(tarea.id)} type="radio"  />
-                                    <label htmlFor={`tarea-${tarea.id}`}>{tarea.nombre}</label>
+                                    <input onClick={() => estado(tarea.id)} type="radio"  />
+                                    <label >{tarea.nombre}</label>
                                 </div>
 
-                                <div>
+                                <div className={styles.tools}>
                                     <Boton variant='delete' click={() => del(tarea.id)}>
                                         Eliminar
                                     </Boton>

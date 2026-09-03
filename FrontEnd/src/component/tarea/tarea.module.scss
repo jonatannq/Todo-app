@@ -3,14 +3,25 @@
 .content{
 
     border-bottom: 1px solid salmon;
-    width: 90%;
+    margin-left: 1rem;
+    width: 80%;
     padding: 0.5rem;
     &:last-of-type{
         border: none;
     }
 }
 
+.content:hover .tools{
+    opacity: 1;
+    visibility: visible;
+}
+
 .flex{
     display: flex;
     justify-content: space-between;
+}
+
+.tools{
+    opacity: 0;
+    visibility: hidden;
 }

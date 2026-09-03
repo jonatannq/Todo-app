@@ -121,6 +121,10 @@ function Home(){
                         estado: true
                     })
                 })
+                setTimeout(() => {
+                    cargarTareas()
+                }, 500);
+                
             } catch (error) {
                 console.log("Hubo un error al completar")
             }
@@ -132,10 +136,8 @@ function Home(){
         <>
         <h1>Todo App List</h1>
 
-        <div className={styles.display}>
+        <div>
 
-         
-            
             <div> 
                 <Tarea 
                     lista={tareas}
@@ -149,9 +151,18 @@ function Home(){
                     
                 />
                 <input className={styles.input} type="text" value={tarea} placeholder="Escribe tu tarea" onChange={(e) => setTarea(e.target.value)} />
-                <Boton  click={handleAdd} >
-                    Agregar
-                </Boton>
+
+                { tarea != "" ?
+                (
+                    <Boton  click={handleAdd} >
+                        Agregar
+                    </Boton>
+                ) : (
+                    <Boton variant="disabled" disabled={true}>
+                         Agregar
+                    </Boton>
+                )}
+                
             </div>
         </div>
     </>
